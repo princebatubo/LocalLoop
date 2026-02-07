@@ -55,8 +55,8 @@ async function handleWebhookEvent(req, res) {
 async function processComment(comment) {
   const message = (comment.message || '').toLowerCase();
 
-  // Check if Snappy was tagged with a screenshot request
-  if (!message.includes('screenshot this')) return;
+  // Check if Snappy Ai was tagged with a screenshot request
+  if (!message.includes('@snappy ai') || !message.includes('screenshot this')) return;
 
   const userId = comment.from?.id;
   const commentId = comment.comment_id;
