@@ -42,10 +42,7 @@ function buildHTML(post) {
   return template;
 }
 
-async function takeScreenshot(postId) {
-  const post = await fetchPostData(postId);
-  const html = buildHTML(post);
-
+async function renderScreenshot(html) {
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -67,4 +64,13 @@ async function takeScreenshot(postId) {
   }
 }
 
-module.exports = { takeScreenshot };
+async function takeScreenshot(postId) {
+  const post = await fetchPostData(postId);
+  return renderScreenshot(buildHTML(post));
+}
+
+async function generateScreenshot(postData) {
+  return renderScreenshot(buildHTML(postData));
+}
+
+module.exports = { takeScreenshot, generateScreenshot };
