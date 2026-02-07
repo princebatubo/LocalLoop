@@ -29,6 +29,8 @@ function handleVerification(req, res) {
 }
 
 async function handleWebhookEvent(req, res) {
+  console.log('Received webhook:', JSON.stringify(req.body, null, 2));
+
   if (!verifySignature(req)) {
     console.warn('Invalid webhook signature');
     return res.sendStatus(401);
