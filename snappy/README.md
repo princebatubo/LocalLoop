@@ -40,6 +40,42 @@ npm start
 3. Set the webhook URL to `https://your-domain.com/webhook`
 4. Generate a Page Access Token with `pages_read_engagement` and `pages_manage_engagement` permissions
 
+## Deploy to Railway
+
+1. Install the Railway CLI and login:
+   ```bash
+   npm install -g @railway/cli
+   railway login
+   ```
+
+2. Create a new project and link it:
+   ```bash
+   railway init
+   railway link
+   ```
+
+3. Set the required environment variables:
+   ```bash
+   railway variables set FB_PAGE_ACCESS_TOKEN=your_token
+   railway variables set FB_APP_SECRET=your_secret
+   railway variables set FB_VERIFY_TOKEN=your_verify_token
+   ```
+
+4. Deploy:
+   ```bash
+   railway up
+   ```
+
+5. Get your public URL:
+   ```bash
+   railway domain
+   ```
+
+6. Set the webhook URL in your Facebook App to:
+   ```
+   https://your-app.up.railway.app/webhook
+   ```
+
 ## Project Structure
 
 ```
